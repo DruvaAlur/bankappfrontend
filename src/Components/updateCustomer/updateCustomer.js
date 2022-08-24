@@ -4,6 +4,7 @@ import NavBar from "../AdminDashboard/NavigationBar/NavBar";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
+import Alert from "@mui/material/Alert";
 import { useLocation, useParams } from "react-router-dom";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./updateCustomer.css";
@@ -67,10 +68,10 @@ function UpdateCustomer() {
         username,
       })
       .then((resp) => {
-        updateStatus("Update done");
+        updateStatus(<Alert severity="success">Customer Updated!</Alert>);
       })
       .catch((error) => {
-        updateStatus(error.response.data);
+        updateStatus(<Alert severity="error">{error.response.data}</Alert>);
       });
   };
   return (
@@ -86,45 +87,55 @@ function UpdateCustomer() {
           alignItems: "center",
         }}
       >
-        <form
+        <div
           style={{
-            width: "70%",
-            height: "50%",
-            justifyItems: "center",
-            textAlign: "center",
+            background: "#80C2CE",
+            padding: "40px",
+            paddingRight: "70px",
+            alignItems: "center",
+            display: "flex",
+            justifyContent: "center",
           }}
         >
-          <label class="fw-bold">Property:</label>
-          <select
-            id="propertyToUpdate"
-            name="propertyToUpdate"
-            onChange={(e) => {
-              updatePropertyToUpdate(e.target.value);
-            }}
-            style={{ width: "200px" }}
-          >
-            <option value="username">username</option>
-            <option value="firstname">firstname</option>
-            <option value="lastname">lastname</option>
-          </select>
-          <br />
-          <br />
-          <label class="fw-bold">Value:</label>
-          <input
-            type="text"
-            value={value}
-            onChange={(e) => updateValue(e.target.value)}
-            style={{ width: "200px" }}
-          ></input>
-          <br />
-          <br />
-          <button class="btn btn-primary" onClick={handleUpdateCustomer}>
-            Update Contact
-          </button>
-          <br />
-          <br />
-          {status}
-        </form>
+          <form>
+            <label class="fw-bold">Property:</label>
+            <br />
+            <select
+              id="propertyToUpdate"
+              name="propertyToUpdate"
+              onChange={(e) => {
+                updatePropertyToUpdate(e.target.value);
+              }}
+              style={{ width: "30vw", height: "40px" }}
+            >
+              <option value="username">username</option>
+              <option value="firstname">firstname</option>
+              <option value="lastname">lastname</option>
+            </select>
+            <br />
+            <br />
+            <label class="fw-bold">Value:</label>
+            <br />
+            <input
+              type="text"
+              value={value}
+              onChange={(e) => updateValue(e.target.value)}
+              style={{ width: "30vw", height: "40px" }}
+            ></input>
+            <br />
+            <br />
+            <button
+              class="btn btn-primary"
+              // style={{ marginLeft: "143px" }}
+              onClick={handleUpdateCustomer}
+            >
+              Update Contact
+            </button>
+            <br />
+            <br />
+            {status}
+          </form>
+        </div>
       </div>
     </>
   );

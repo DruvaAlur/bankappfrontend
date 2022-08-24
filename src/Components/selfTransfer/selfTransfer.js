@@ -97,58 +97,82 @@ function SelfTransfer() {
   return (
     <>
       <NavBar username={currentUser.username} />
-      <form style={{ width: "25vw" }}>
-        <TextField
-          label="ammount"
-          placeholder="Type in here"
-          variant="outlined"
-          onChange={(e) => updateAmount(e.target.value)}
-        />
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexWrap: "wrap",
+          flexDirection: "column",
+        }}
+      >
+        <div style={{ background: "#80C2CE", padding: "40px" }}>
+          <form style={{ width: "35vw" }}>
+            <TextField
+              label="ammount"
+              placeholder="Type in here"
+              variant="outlined"
+              onChange={(e) => updateAmount(e.target.value)}
+              style={{ width: "30vw", height: "40px" }}
+            />
+            <br />
+            <br />
 
-        {/* <TextField
+            {/* <TextField
           label="Credit Bank Abbrevation"
           placeholder="Type in here"
           variant="outlined"
           onChange={(e) => updateCreditBankAbbre(e.target.value)}
         /> */}
-        <label class="fw-bold">Debit Bank Abbrevation</label>
-        <select
-          id="BankAbbrevation"
-          name="BankAbbrevation"
-          onChange={(e) => {
-            updateCreditBankAbbre(e.target.value);
-          }}
-        >
-          {optionsOfBankAbbrevation}
-        </select>
-        {/* <TextField
+            <label class="fw-bold">Debit Bank Abbrevation</label>
+            <br />
+            <select
+              id="BankAbbrevation"
+              name="BankAbbrevation"
+              onChange={(e) => {
+                updateCreditBankAbbre(e.target.value);
+              }}
+              style={{ width: "30vw", height: "40px" }}
+            >
+              {optionsOfBankAbbrevation}
+            </select>
+            {/* <TextField
           label="Debit Bank Abbrevation"
           placeholder="Type in here"
           variant="outlined"
           onChange={(e) => updateDebitBankAbbre(e.target.value)}
         /> */}
-        <label class="fw-bold">Debit Bank Abbrevation</label>
-        <select
-          id="BankAbbrevation"
-          name="BankAbbrevation"
-          onChange={(e) => {
-            updateDebitBankAbbre(e.target.value);
-          }}
-        >
-          {optionsOfBankAbbrevation}
-        </select>
-        <br />
-        <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-          <button
-            type="button"
-            class="btn btn-primary"
-            onClick={handleTransferMoney}
-          >
-            Withdraw money
-          </button>
-        </Box>
-        {status}
-      </form>
+            <label class="fw-bold">Debit Bank Abbrevation</label>
+            <br />
+            <select
+              id="BankAbbrevation"
+              name="BankAbbrevation"
+              onChange={(e) => {
+                updateDebitBankAbbre(e.target.value);
+              }}
+              style={{ width: "30vw", height: "40px" }}
+            >
+              {optionsOfBankAbbrevation}
+            </select>
+            <br />
+            <br />
+            <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onClick={handleTransferMoney}
+              >
+                Transfer money
+              </button>
+            </Box>
+            <br />
+            <br />
+            {status}
+          </form>
+        </div>
+      </div>
     </>
   );
 }

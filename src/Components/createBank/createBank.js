@@ -69,35 +69,57 @@ function CreateBank() {
   return (
     <>
       <NavBar username={currentUser.username} />
-      <form style={{ width: "25vw" }}>
-        <TextField
-          label="BankName"
-          placeholder="Type in here"
-          variant="outlined"
-          onChange={(e) => updateBankName(e.target.value)}
-        />
-        <br />
-        <TextField
-          label="Bank Abbrevation"
-          placeholder="Type in here"
-          variant="outlined"
-          onChange={(e) => updateBankAbbre(e.target.value)}
-        />
-        <br />
-        <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-          <button
-            type="button"
-            class="btn btn-primary"
-            onClick={handleCreateBank}
-          >
-            Create Bank
-          </button>
-          {/* <Button variant="solid" color="primary" onClick={handleLogin}>
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexWrap: "wrap",
+          flexDirection: "column",
+        }}
+      >
+        <div
+          style={{
+            background: "#80C2CE",
+
+            padding: "40px",
+          }}
+        >
+          <form style={{ width: "30vw" }}>
+            <TextField
+              label="BankName"
+              placeholder="Type in here"
+              variant="outlined"
+              onChange={(e) => updateBankName(e.target.value)}
+            />
+            <br />
+            <TextField
+              label="Bank Abbrevation"
+              placeholder="Type in here"
+              variant="outlined"
+              onChange={(e) => updateBankAbbre(e.target.value)}
+            />
+            <br />
+            <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onClick={handleCreateBank}
+              >
+                Create Bank
+              </button>
+              {/* <Button variant="solid" color="primary" onClick={handleLogin}>
                 Submit
               </Button> */}
-        </Box>
-        {status}
-      </form>
+            </Box>
+            <br />
+            <br />
+            <div>{status}</div>
+          </form>
+        </div>
+      </div>
     </>
   );
 }

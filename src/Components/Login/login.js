@@ -2,6 +2,7 @@ import "./login.css";
 import Box from "@mui/joy/Box";
 import TextField from "@mui/joy/TextField";
 import Button from "@mui/joy/Button";
+import Alert from "@mui/material/Alert";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -25,7 +26,7 @@ function Login() {
         }
       })
       .catch((error) => {
-        updateStatus(error.response.data);
+        updateStatus(<Alert severity="error">{error.response.data}</Alert>);
       });
   };
   return (
@@ -59,6 +60,7 @@ function Login() {
                 Submit
               </Button> */}
             </Box>
+            <br />
             {status}
           </form>
         </div>

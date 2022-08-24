@@ -80,36 +80,48 @@ function CreateCustomer() {
   return (
     <>
       <NavBar username={currentUser.username} />
-      <form style={{ width: "25vw" }}>
-        <TextField
-          label="First Name"
-          placeholder="Type in here"
-          variant="outlined"
-          onChange={(e) => updatefirstName(e.target.value)}
-        />
-        <br />
-        <TextField
-          label="Last Name"
-          placeholder="Type in here"
-          variant="outlined"
-          onChange={(e) => updatelastName(e.target.value)}
-        />
-        <br />
-        <TextField
-          label="UserName"
-          placeholder="Type in here"
-          variant="outlined"
-          onChange={(e) => updateUsername(e.target.value)}
-        />
-        <br />
-        <TextField
-          label="Password"
-          placeholder="Type in here"
-          variant="outlined"
-          onChange={(e) => updatePassword(e.target.value)}
-        />
-        <br />
-        {/* <select
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <div
+          style={
+            {
+              // padding: "40px",
+              // background: "black",
+              // width: "auto",
+            }
+          }
+        >
+          <form
+            style={{ width: "25vw", background: "#80C2CE", padding: "40px" }}
+          >
+            <TextField
+              label="First Name"
+              placeholder="Type in here"
+              variant="outlined"
+              onChange={(e) => updatefirstName(e.target.value)}
+            />
+            <br />
+            <TextField
+              label="Last Name"
+              placeholder="Type in here"
+              variant="outlined"
+              onChange={(e) => updatelastName(e.target.value)}
+            />
+            <br />
+            <TextField
+              label="UserName"
+              placeholder="Type in here"
+              variant="outlined"
+              onChange={(e) => updateUsername(e.target.value)}
+            />
+            <br />
+            <TextField
+              label="Password"
+              placeholder="Type in here"
+              variant="outlined"
+              onChange={(e) => updatePassword(e.target.value)}
+            />
+            <br />
+            {/* <select
           id="role"
           name="role"
           onChange={(e) => {
@@ -119,35 +131,39 @@ function CreateCustomer() {
           <option value="user">user</option>
           <option value="admin">admin</option>
         </select> */}
-        <label>
-          <b>Role</b>
-        </label>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={role}
-          label="Role"
-          onChange={(e) => {
-            updateRole(e.target.value);
-          }}
-          fullWidth
-        >
-          <MenuItem value={"user"}>user</MenuItem>
-          <MenuItem value={"admin"}>admin</MenuItem>
-        </Select>
-        <br />
-        <br />
-        <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-          <button
-            type="button"
-            class="btn btn-primary"
-            onClick={handleCreateCustomer}
-          >
-            Create Customer
-          </button>
-        </Box>
-        {status}
-      </form>
+            <label>
+              <b>Role</b>
+            </label>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={role}
+              label="Role"
+              onChange={(e) => {
+                updateRole(e.target.value);
+              }}
+              fullWidth
+            >
+              <MenuItem value={"user"}>user</MenuItem>
+              <MenuItem value={"admin"}>admin</MenuItem>
+            </Select>
+            <br />
+            <br />
+            <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onClick={handleCreateCustomer}
+              >
+                Create Customer
+              </button>
+            </Box>
+            <br />
+
+            {status}
+          </form>
+        </div>
+      </div>
     </>
   );
 }

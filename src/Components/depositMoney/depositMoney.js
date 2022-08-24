@@ -96,45 +96,66 @@ function DepositMoney() {
   return (
     <>
       <NavBar username={currentUser.username} />
-      <form style={{ width: "25vw" }}>
-        <TextField
-          label="Ammount"
-          placeholder="Type in here"
-          variant="outlined"
-          onChange={(e) => updateAmount(e.target.value)}
-        />
-        <br />
-        {/* <TextField
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexWrap: "wrap",
+          flexDirection: "column",
+        }}
+      >
+        <div style={{ background: "#80C2CE", padding: "40px" }}>
+          <form style={{ width: "35vw" }}>
+            <TextField
+              label="Ammount"
+              placeholder="Type in here"
+              variant="outlined"
+              onChange={(e) => updateAmount(e.target.value)}
+              style={{ width: "30vw", height: "40px" }}
+            />
+            <br />
+            <br />
+            {/* <TextField
           label="Bank Abbrevation"
           placeholder="Type in here"
           variant="outlined"
           onChange={(e) => updateBankAbbre(e.target.value)}
         /> */}
-        <label class="fw-bold">Bank Abbrevation</label>
-        <select
-          id="BankAbbrevation"
-          name="BankAbbrevation"
-          onChange={(e) => {
-            updateBankAbbre(e.target.value);
-          }}
-        >
-          {optionsOfBankAbbrevation}
-        </select>
-        <br />
-        <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-          <button
-            type="button"
-            class="btn btn-primary"
-            onClick={handleDepositMoney}
-          >
-            Create Account
-          </button>
-          {/* <Button variant="solid" color="primary" onClick={handleLogin}>
+            <label class="fw-bold">Bank Abbrevation</label>
+            <br />
+            <select
+              id="BankAbbrevation"
+              name="BankAbbrevation"
+              onChange={(e) => {
+                updateBankAbbre(e.target.value);
+              }}
+              style={{ width: "30vw", height: "40px" }}
+            >
+              {optionsOfBankAbbrevation}
+            </select>
+            <br />
+            <br />
+            <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onClick={handleDepositMoney}
+              >
+                Create Account
+              </button>
+              {/* <Button variant="solid" color="primary" onClick={handleLogin}>
                 Submit
               </Button> */}
-        </Box>
-        {status}
-      </form>
+            </Box>
+            <br />
+            <br />
+            {status}
+          </form>
+        </div>
+      </div>
     </>
   );
 }

@@ -97,62 +97,82 @@ function CreateAccount() {
   return (
     <>
       <NavBar username={currentUser.username} />
-
-      <form style={{ width: "45vw", marginTop: "50px" }}>
-        {/* <TextField
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{
+            background: "#80C2CE",
+            padding: "40px",
+            paddingRight: "120px",
+          }}
+        >
+          <form>
+            {/* <TextField  
           label="Username"
           placeholder="Type in here"
           variant="outlined"
           onChange={(e) => updateUsername(e.target.value)}
         /> */}
-        <label class="fw-bold">Username</label>
-        <select
-          id="Username"
-          name="Username"
-          onChange={(e) => {
-            updateUsername(e.target.value);
-          }}
-          style={{ width: "200px", height: "30px" }}
-        >
-          {optionsOfAllCustomers}
-        </select>
-        {/* <TextField
+            <label class="fw-bold">Username</label>
+            <br />
+            <select
+              id="Username"
+              name="Username"
+              onChange={(e) => {
+                updateUsername(e.target.value);
+              }}
+              style={{ width: "30vw", height: "40px" }}
+            >
+              {optionsOfAllCustomers}
+            </select>
+            {/* <TextField
           label="Bank Abbrevation"
           placeholder="Type in here"
           variant="outlined"
           onChange={(e) => updateBankAbbre(e.target.value)}
         /> */}
-        <br />
-        <br />
+            <br />
+            <br />
 
-        <label class="fw-bold">Bank Abbrevation</label>
-        <select
-          id="BankAbbrevation"
-          name="BankAbbrevation"
-          onChange={(e) => {
-            updateBankAbbre(e.target.value);
-          }}
-          style={{ width: "200px", height: "30px" }}
-        >
-          {optionsOfAllBanks}
-        </select>
-        <br />
-        <br />
-        <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-          <button
-            type="button"
-            class="btn btn-primary"
-            onClick={handleCreateAccount}
-            style={{ marginLeft: "200px" }}
-          >
-            Create Account
-          </button>
-          {/* <Button variant="solid" color="primary" onClick={handleLogin}>
-                Submit
-              </Button> */}
-        </Box>
-        {status}
-      </form>
+            <label class="fw-bold" style={{ width: "140px" }}>
+              Bank Abbrevation
+            </label>
+            <br />
+            <select
+              id="BankAbbrevation"
+              name="BankAbbrevation"
+              onChange={(e) => {
+                updateBankAbbre(e.target.value);
+              }}
+              style={{ width: "30vw", height: "40px" }}
+            >
+              {optionsOfAllBanks}
+            </select>
+            <br />
+            <br />
+
+            <button
+              type="button"
+              class="btn btn-primary"
+              onClick={handleCreateAccount}
+              style={{ marginLeft: "13px" }}
+            >
+              Create Account
+            </button>
+            <br />
+            <br />
+
+            <div>{status}</div>
+          </form>
+        </div>
+      </div>
     </>
   );
 }
