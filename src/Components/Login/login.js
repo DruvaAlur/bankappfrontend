@@ -15,9 +15,13 @@ function Login() {
       .post("http://localhost:8800/api/v1/login", { username, password })
       .then((resp) => {
         if (resp.data.role == "admin") {
-          navigation("/adminDashboard");
+          navigation(
+            `/adminDashboard/createBank/${resp.data.credential.username}`
+          );
         } else {
-          navigation(`/userDashboard/${resp.data.credential.username}`);
+          navigation(
+            `/userDashboard/depositMoney/${resp.data.credential.username}`
+          );
         }
       })
       .catch((error) => {

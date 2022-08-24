@@ -14,14 +14,15 @@ import axios from "axios";
 const pages = ["Create Contacts", "Get Contacts", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar(prop) {
+  const username = prop.username;
   //   const username = props.username;
   //   const [anchorElNav, setAnchorElNav] = React.useState(null);
   //   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const navigation = new useNavigate();
 
   const handleCreateBank = () => {
-    navigation("/adminDashboard/createBank");
+    navigation(`/adminDashboard/createBank/${username}`);
   };
   //   const handleUpdateContact = () => {
   //     navigation(`/userDashboard/UpdateContacts/${username}`);
@@ -37,8 +38,11 @@ function ResponsiveAppBar() {
       navigation("/");
     });
   };
+  const handleCreateAccount = () => {
+    navigation(`/userDashboard/createAccount/${username}`);
+  };
   const handleGetAllCustomers = () => [
-    navigation("/adminDashboard/getAllCustomers"),
+    navigation(`/adminDashboard/getAllCustomers/${username}`),
   ];
   return (
     <AppBar position="static">
@@ -75,10 +79,17 @@ function ResponsiveAppBar() {
               // onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
               onClick={() => {
-                navigation("/adminDashboard/createCustomer");
+                navigation(`/adminDashboard/createCustomer/${username}`);
               }}
             >
               Create Customer
+            </Button>
+            <Button
+              // onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+              onClick={handleCreateAccount}
+            >
+              Create Account
             </Button>
             <Button
               // onClick={handleCloseNavMenu}
@@ -87,13 +98,13 @@ function ResponsiveAppBar() {
             >
               Get All Customers
             </Button>
-            <Button
+            {/* <Button
               // onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
               //   onClick={handleCreateContactDetail}
             >
               Create Contact Detail
-            </Button>
+            </Button> */}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -106,7 +117,7 @@ function ResponsiveAppBar() {
             </Button>
           </Box>
         </Toolbar>
-      </Container>
+      </Container>  
     </AppBar>
   );
 }

@@ -19,8 +19,14 @@ function ResponsiveAppBar(prop) {
   //   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const navigation = new useNavigate();
 
-  const handleCreateAccount = () => {
-    navigation(`/userDashboard/createAccount/${username}`);
+  const transferMoney = () => {
+    navigation(`/userDashboard/transferMoney/${username}`);
+  };
+  const handleWithdrawMoney = () => {
+    navigation(`/userDashboard/withdrawMoney/${username}`);
+  };
+  const selfTransfer = () => {
+    navigation(`/userDashboard/selfTransfer/${username}`);
   };
   //   const handleUpdateContact = () => {
   //     navigation(`/userDashboard/UpdateContacts/${username}`);
@@ -35,6 +41,9 @@ function ResponsiveAppBar(prop) {
     await axios.post("http://localhost:8800/api/v1/logout").then(() => {
       navigation("/");
     });
+  };
+  const handleGetAllAccounts = () => {
+    navigation(`/userDashboard/getAccounts/${username}`);
   };
   return (
     <AppBar position="static">
@@ -63,13 +72,6 @@ function ResponsiveAppBar(prop) {
             <Button
               // onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
-              onClick={handleCreateAccount}
-            >
-              Create Account
-            </Button>
-            <Button
-              // onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "white", display: "block" }}
               onClick={() => {
                 navigation(`/userDashboard/depositMoney/${username}`);
               }}
@@ -77,18 +79,31 @@ function ResponsiveAppBar(prop) {
               Deposit Money
             </Button>
             <Button
-              // onClick={handleCloseNavMenu}
+              onClick={handleWithdrawMoney}
               sx={{ my: 2, color: "white", display: "block" }}
               //   onClick={handleGetAllContact}
             >
-              Get All Contacts
+              Withdraw Money
             </Button>
             <Button
               // onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
-              //   onClick={handleCreateContactDetail}
+              onClick={transferMoney}
             >
-              Create Contact Detail
+              Transfer Money
+            </Button>
+            <Button
+              // onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+              onClick={selfTransfer}
+            >
+              Self Transfer
+            </Button>
+            <Button
+              onClick={handleGetAllAccounts}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Get All Accounts
             </Button>
           </Box>
 

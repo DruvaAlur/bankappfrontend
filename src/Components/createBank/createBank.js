@@ -4,10 +4,58 @@ import Alert from "@mui/material/Alert";
 import TextField from "@mui/joy/TextField";
 import { useState } from "react";
 import NavBar from "../AdminDashboard/NavigationBar/NavBar";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 function CreateBank() {
   const [bankName, updateBankName] = useState("");
   const [bankAbbre, updateBankAbbre] = useState("");
   const [status, updateStatus] = useState("");
+  const currentUser = useParams();
+  const navigation = new useNavigate();
+  const [loginStatus, updateLoginStatus] = useState("");
+
+  useEffect(() => {
+    axios
+      .post(
+        `http://localhost:8800/api/v1/isAdminLoggedIn/${currentUser.username}`,
+        {}
+      )
+      .then((resp) => {
+        updateLoginStatus(true);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        updateLoginStatus(false);
+      });
+  }, []);
+
+  if (!loginStatus) {
+    return (
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexWrap: "wrap",
+          flexDirection: "column",
+        }}
+      >
+        <p style={{ color: "red", fontSize: "20px" }}>
+          User not logged in please login by clicking below
+        </p>
+
+        <button
+          onClick={() => navigation("/")}
+          class="btn btn-secondary button"
+        >
+          login
+        </button>
+      </div>
+    );
+  }
   const handleCreateBank = () => {
     axios
       .post("http://localhost:8800/api/v1/createBank", { bankName, bankAbbre })
@@ -20,7 +68,7 @@ function CreateBank() {
   };
   return (
     <>
-      <NavBar />
+      <NavBar username={currentUser.username} />
       <form style={{ width: "25vw" }}>
         <TextField
           label="BankName"

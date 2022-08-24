@@ -10,15 +10,25 @@ import UserDashboard from "./Components/userDashboard/userDashboard";
 import GetAllCustomers from "./Components/getAllCustomers/getAllCustomers";
 import CreateAccount from "./Components/createAccount/createAccount";
 import DepositMoney from "./Components/depositMoney/depositMoney";
+import WithdrawMoney from "./Components/withdrawMoney/withdrawMoney";
+import TransferMoney from "./Components/transferMoney/TransferMoney";
+import SelfTransfer from "./Components/selfTransfer/selfTransfer";
+import GetAccountDetails from "./Components/getAccountDetails/getAccountDetails";
+import UpdateCustomer from "./Components/updateCustomer/updateCustomer";
+import GetAccounts from "./Components/getAccounts/getAccounts";
 function App() {
   return (
     <Routes>
       <Route exact path="/" element={<Login />} />
       <Route exact path="/adminDashboard" element={<AdminDashboard />} />
-      <Route exact path="/adminDashboard/createBank" element={<CreateBank />} />
       <Route
         exact
-        path="/adminDashboard/createCustomer"
+        path="/adminDashboard/createBank/:username"
+        element={<CreateBank />}
+      />
+      <Route
+        exact
+        path="/adminDashboard/createCustomer/:username"
         element={<CreateCustomer />}
       />
       <Route
@@ -28,7 +38,7 @@ function App() {
       />
       <Route
         exact
-        path="/adminDashboard/getAllCustomers"
+        path="/adminDashboard/getAllCustomers/:username"
         element={<GetAllCustomers />}
       />
       <Route
@@ -40,6 +50,36 @@ function App() {
         exact
         path="/userDashboard/depositMoney/:username"
         element={<DepositMoney />}
+      />
+      <Route
+        exact
+        path="/userDashboard/withdrawMoney/:username"
+        element={<WithdrawMoney />}
+      />
+      <Route
+        exact
+        path="/userDashboard/transferMoney/:username"
+        element={<TransferMoney />}
+      />
+      <Route
+        exact
+        path="/userDashboard/selfTransfer/:username"
+        element={<SelfTransfer />}
+      />
+      <Route
+        exact
+        path="/adminDashboard/GetAccountDetails/:username"
+        element={<GetAccountDetails />}
+      />
+      <Route
+        exact
+        path="/adminDashboard/UpdateCustomer/:username"
+        element={<UpdateCustomer />}
+      />
+      <Route
+        exact
+        path="/userDashboard/getAccounts/:username"
+        element={<GetAccounts />}
       />
     </Routes>
   );
